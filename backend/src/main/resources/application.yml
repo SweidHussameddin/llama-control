@@ -1,0 +1,31 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: llama-control
+  task:
+    scheduling:
+      pool:
+        # Need at least 2 threads so the fast snapshot publisher and the slow HTTP poller
+        # can run concurrently — otherwise a stalled HTTP call freezes dashboard updates.
+        size: 4
+
+llama-control:
+  # llama-server binary to invoke: a name on PATH or an absolute path (env LLAMA_CONTROL_BINARY)
+  binary: ${LLAMA_CONTROL_BINARY:llama-server}
+  # Directories to scan for .gguf models, comma-separated (env LLAMA_CONTROL_MODEL_DIRS)
+  model-dirs: ${LLAMA_CONTROL_MODEL_DIRS:${user.home}/models}
+  # Where to persist named profiles
+  profiles-dir: ${user.home}/.config/llama-control/profiles
+  # Default host/port for the managed llama-server
+  default-server-host: 127.0.0.1
+  default-server-port: 8080
+  # Where this control plane's OpenAI-compatible proxy is reachable (advertised
+  # to clients via ServerStatus.baseUrl). Must match server.port above.
+  proxy-host: 127.0.0.1
+  proxy-port: 8090
+
+logging:
+  level:
+    de.sweid.llamactl: DEBUG

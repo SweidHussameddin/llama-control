@@ -1,0 +1,100 @@
+:root {
+  /* Surface palette — warm-dark, almost-black with a slight cool tint */
+  --bg: #07090c;
+  --bg-grid: rgba(255, 200, 87, 0.025);
+  --panel: #0d1117;
+  --panel-2: #12181f;
+  --panel-3: #181f28;
+  --panel-bright: #1d2530;
+  --border: #1c232e;
+  --border-bright: #2a3445;
+  --border-glow: rgba(255, 200, 87, 0.2);
+
+  /* Text */
+  --text: #e3e8ef;
+  --text-2: #c5ccd9;
+  --muted: #7a8499;
+  --dim: #4f5868;
+  --faint: #323a47;
+
+  /* Accents — instrument-panel amber + electric green for live */
+  --amber: #ffc857;
+  --amber-soft: rgba(255, 200, 87, 0.15);
+  --amber-glow: rgba(255, 200, 87, 0.4);
+
+  --live: #5dffb0;
+  --live-soft: rgba(93, 255, 176, 0.12);
+  --live-glow: rgba(93, 255, 176, 0.45);
+
+  --danger: #ff5e7a;
+  --danger-soft: rgba(255, 94, 122, 0.12);
+
+  --warn: #f5b14c;
+
+  --info: #7ec6ff;
+  --info-soft: rgba(126, 198, 255, 0.12);
+
+  /* Type */
+  --mono: 'IBM Plex Mono', ui-monospace, 'JetBrains Mono', Menlo, monospace;
+  --sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --condensed: 'IBM Plex Sans Condensed', var(--sans);
+
+  /* Numeric */
+  --sidebar-w: 220px;
+  --header-h: 56px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 400;
+  font-feature-settings: 'ss01', 'cv01';
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  /* Subtle engineering-paper grid */
+  background-image:
+    linear-gradient(to right, var(--bg-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--bg-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-attachment: fixed;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-bright);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
